@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap");
+:root {
+  --font-principal: "Kode Mono", monospace;
+  --bg-color: #387ADF;
+  --cor-btn: #0d3f8b;
+  --primary-color: #BBE2EC;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  font-family: var(--font-principal);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+}
+body h1 {
+  font-size: 5em;
+}
+body h2 {
+  font-size: 4em;
+}
+body h3 {
+  font-size: 2em;
+  margin-top: 20px;
+}
+body .mensagem {
+  font-size: 1.5em;
+  margin-top: 40px;
+}
+body .mensagem .box {
+  border: 2px solid var(--primary-color);
+  padding: 0 3px;
+  display: inline-block;
+  font-size: 4em;
+  padding: 10px;
+  margin: 20px;
+}
+body button.btn-jogar {
+  font-family: var(--font-principal);
+  color: var(--cor-btn);
+  font-weight: 700;
+  font-size: 1.2em;
+  padding: 12px 20px;
+  border: none;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  margin-top: 20px;
+}
+body button.btn-jogar:hover {
+  outline: 2px solid var(--cor-btn);
+  background-color: #84d5e9;
+}/*# sourceMappingURL=style.css.map */
