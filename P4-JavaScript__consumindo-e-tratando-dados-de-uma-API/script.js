@@ -29,8 +29,6 @@ async function buscarEMostrarVideos() {
 }
 
 buscarEMostrarVideos();
-
-
 /*
     async = é utilizada para declarar que a function será assíncrona.
     await = aguardar que a busca seja feita tipo .then;
@@ -54,7 +52,7 @@ buscarEMostrarVideos();
     na para o programador ou user.
 
 */
-
+// filtrar por barra de pesquisa:
 const barraDePesquisa = document.querySelector('.pesquisar__input');
 
 barraDePesquisa.addEventListener('input', filtrarPesquisa);
@@ -73,6 +71,7 @@ function filtrarPesquisa(){
     }
 }
 
+// filtrar por categoria: 
 const botaoCategoria = document.querySelectorAll('.superior__item');
 
 botaoCategoria.forEach((botao) => {
@@ -87,6 +86,5 @@ function filtrarPorCategoria(name) {
         let valorFiltro = name.toLowerCase();
 
         !categoria.includes(valorFiltro) && valorFiltro != 'tudo' ? video.style.display = 'none' : video.style.display = 'block';
-        
     });
 }
