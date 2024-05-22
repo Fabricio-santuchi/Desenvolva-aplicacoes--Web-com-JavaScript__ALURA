@@ -19,13 +19,17 @@ async function criaVideo(titulo, descricao, url, imagem) {
         })
     });
 
+    if(!conexao.ok){
+        throw new Error('Não foi possivel enviar o video');
+    }
+
     const conexaoConvertida = await conexao.json();
     return conexaoConvertida;
 }
 
 async function buscaVideo(termoDeBusca){
     console.log(termoDeBusca)
-    const conexao = await fetch(`http://localhost:3000/videos?titulo_like=${termoDeBusca}`);
+    const conexao = await fetch(`http://localhost:3000/videos?q=${termoDeBusca}`);
     const conexaoConvertida = conexao.json();
     return conexaoConvertida;
 }
