@@ -22,7 +22,7 @@ formulario.addEventListener('submit', (e) => {
 
 camposDoFormulario.forEach((campo) => {
     campo.addEventListener("blur", () => verificaCampo(campo));
-    campo.addEventListener('invalid', evento => event.preventDefault());
+    campo.addEventListener('invalid', evento => evento.preventDefault());
 })
 
 const tiposDeErro = [
