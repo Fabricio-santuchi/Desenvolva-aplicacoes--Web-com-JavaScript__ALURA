@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap");
 :root {
   --font-principal: "Kode Mono", monospace;
-  --bg-color: #0092D5;
+  --bg-color: #0092d5;
   --cor-btn: #0d3f8b;
-  --primary-color: #BBE2EC;
+  --primary-color: #bbe2ec;
 }
 
 body {
@@ -55,4 +55,4 @@ body button.btn-jogar {
 body button.btn-jogar:hover {
   outline: 2px solid var(--cor-btn);
   background-color: #84d5e9;
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */

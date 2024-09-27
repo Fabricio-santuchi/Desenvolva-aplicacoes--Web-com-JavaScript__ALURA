@@ -1,62 +1,64 @@
 export default function ehUmCPF(campo) {
-    const cpf = campo.value.replace(/\.|-/g, "");
+  const cpf = campo.value.replace(/\.|-/g, "");
 
-    if(validaNumerosRepetidos(cpf) || validaPrimeiroDigito(cpf) || validaSegundoDigito(cpf)){
-        campo.setCustomValidity('Esse cpf não é valido');
-    }
-
-
+  if (
+    validaNumerosRepetidos(cpf) ||
+    validaPrimeiroDigito(cpf) ||
+    validaSegundoDigito(cpf)
+  ) {
+    campo.setCustomValidity("Esse cpf não é valido");
+  }
 }
 
 function validaNumerosRepetidos(cpf) {
-    const numeroRepetidos = [
-        '00000000000',
-        '11111111111',
-        '22222222222',
-        '33333333333',
-        '44444444444',
-        '55555555555',
-        '66666666666',
-        '77777777777',
-        '88888888888',
-        '99999999999',
-        '00000000000'
-    ]
-    return numeroRepetidos.includes(cpf);
+  const numeroRepetidos = [
+    "00000000000",
+    "11111111111",
+    "22222222222",
+    "33333333333",
+    "44444444444",
+    "55555555555",
+    "66666666666",
+    "77777777777",
+    "88888888888",
+    "99999999999",
+    "00000000000",
+  ];
+  return numeroRepetidos.includes(cpf);
 }
 
 function validaPrimeiroDigito(cpf) {
-    let soma = 0;
-    let multiplicador = 10;
-    for(let i = 0; i < 9; i++){
-        soma += cpf[i] * multiplicador;
-        multiplicador--;
-    }
+  let soma = 0;
+  let multiplicador = 10;
+  for (let i = 0; i < 9; i++) {
+    soma += cpf[i] * multiplicador;
+    multiplicador--;
+  }
 
-    soma = (soma * 10) % 11;
+  soma = (soma * 10) % 11;
 
-    if(soma == 10 || soma == 11) {
-        soma = 0;
-    }
-    return soma != cpf[9];
+  if (soma == 10 || soma == 11) {
+    soma = 0;
+  }
+  return soma != cpf[9];
 
-    //verificar o seu cpf e te retornar o penultimo valor do seu cpf.  000.000.000-(esse)0
+  //verificar o seu cpf e te retornar o penultimo valor do seu cpf.  000.000.000-(esse)0
 }
 
 function validaSegundoDigito(cpf) {
-    let soma = 0;
-    let multiplicador = 11;
-    for(let i = 0; i < 10; i++){
-        soma += cpf[i] * multiplicador;
-        multiplicador--;
-    }
+  let soma = 0;
+  let multiplicador = 11;
+  for (let i = 0; i < 10; i++) {
+    soma += cpf[i] * multiplicador;
+    multiplicador--;
+  }
 
-    soma = (soma * 10) % 11;
+  soma = (soma * 10) % 11;
 
-    if(soma == 10 || soma == 11) {
-        soma = 0;
-    }
-    return soma != cpf[10];
+  if (soma == 10 || soma == 11) {
+    soma = 0;
+  }
+  return soma != cpf[10];
 
-    //verificar o seu cpf e te retornar o ultimo valor do seu cpf.  000.000.000-(esse)0
+  //verificar o seu cpf e te retornar o ultimo valor do seu cpf.  000.000.000-(esse)0
 }

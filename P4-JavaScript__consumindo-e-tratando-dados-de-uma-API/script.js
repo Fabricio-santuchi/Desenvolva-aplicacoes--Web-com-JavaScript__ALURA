@@ -1,15 +1,16 @@
-const containerVideos = document.querySelector('.videos__container');
+const containerVideos = document.querySelector(".videos__container");
 
 async function buscarEMostrarVideos() {
-    try{
-        const busca = await fetch('http://localhost:3000/videos');
-        const videos = await busca.json();
+  try {
+    const busca = await fetch("http://localhost:3000/videos");
+    const videos = await busca.json();
 
-        videos.forEach((video) => { // video são as propriedades obj dentro do array videos.
-            if(video.categoria == ''){
-                throw new Error('Video não tem categoria');
-            }
-            containerVideos.innerHTML += `
+    videos.forEach((video) => {
+      // video são as propriedades obj dentro do array videos.
+      if (video.categoria == "") {
+        throw new Error("Video não tem categoria");
+      }
+      containerVideos.innerHTML += `
             <li class="videos__item">
                 <iframe src="${video.url}" title="${video.titulo}" frameborder="0" allowfullscreen> </iframe>
                 <div class="descricao-video">
@@ -20,12 +21,12 @@ async function buscarEMostrarVideos() {
                 </div>
             </li>
             `;
-        })
-    } catch(error){
-        containerVideos.innerHTML = `<p> Houve um erro ao carregar os videos: ${error}</p>`
-    } finally {
-        console.log('tentativa de carregamento dos videos!');
-    }
+    });
+  } catch (error) {
+    containerVideos.innerHTML = `<p> Houve um erro ao carregar os videos: ${error}</p>`;
+  } finally {
+    console.log("tentativa de carregamento dos videos!");
+  }
 }
 
 buscarEMostrarVideos();
@@ -53,38 +54,44 @@ buscarEMostrarVideos();
 
 */
 // filtrar por barra de pesquisa:
-const barraDePesquisa = document.querySelector('.pesquisar__input');
+const barraDePesquisa = document.querySelector(".pesquisar__input");
 
-barraDePesquisa.addEventListener('input', filtrarPesquisa);
+barraDePesquisa.addEventListener("input", filtrarPesquisa);
 
-function filtrarPesquisa(){
-    const videos = document.querySelectorAll('.videos__item');
-    const valorFiltro = barraDePesquisa.value.toLowerCase();
-    if(barraDePesquisa.value != ""){
-        videos.forEach(video => {
-            let titulo = video.querySelector('.titulo-video').textContent.toLowerCase();
+function filtrarPesquisa() {
+  const videos = document.querySelectorAll(".videos__item");
+  const valorFiltro = barraDePesquisa.value.toLowerCase();
+  if (barraDePesquisa.value != "") {
+    videos.forEach((video) => {
+      let titulo = video
+        .querySelector(".titulo-video")
+        .textContent.toLowerCase();
 
-            !titulo.includes(valorFiltro) ? video.style.display = 'none' : video.style.display = 'block';
-        });
-    }else{
-        videos.forEach(video => video.style.display = 'block');
-    }
+      !titulo.includes(valorFiltro)
+        ? (video.style.display = "none")
+        : (video.style.display = "block");
+    });
+  } else {
+    videos.forEach((video) => (video.style.display = "block"));
+  }
 }
 
-// filtrar por categoria: 
-const botaoCategoria = document.querySelectorAll('.superior__item');
+// filtrar por categoria:
+const botaoCategoria = document.querySelectorAll(".superior__item");
 
 botaoCategoria.forEach((botao) => {
-    let nomeCategoria = botao.getAttribute('name');
-    botao.addEventListener('click', () => filtrarPorCategoria(nomeCategoria));
-})
+  let nomeCategoria = botao.getAttribute("name");
+  botao.addEventListener("click", () => filtrarPorCategoria(nomeCategoria));
+});
 
 function filtrarPorCategoria(name) {
-    const videos = document.querySelectorAll('.videos__item');
-    videos.forEach((video) => {
-        let categoria = video.querySelector('.categoria').textContent.toLowerCase();
-        let valorFiltro = name.toLowerCase();
+  const videos = document.querySelectorAll(".videos__item");
+  videos.forEach((video) => {
+    let categoria = video.querySelector(".categoria").textContent.toLowerCase();
+    let valorFiltro = name.toLowerCase();
 
-        !categoria.includes(valorFiltro) && valorFiltro != 'tudo' ? video.style.display = 'none' : video.style.display = 'block';
-    });
+    !categoria.includes(valorFiltro) && valorFiltro != "tudo"
+      ? (video.style.display = "none")
+      : (video.style.display = "block");
+  });
 }
